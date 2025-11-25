@@ -16,8 +16,8 @@
   --color-brand-twitter-dark: #232543;
   --color-brand-twitter-threaded-line: #425364;
 
-  --color-brand-mastodon: #27a4b8;
-  --color-brand-mastodon-links: #81c5cf;
+  --color-brand-mastodon: #1f449d;
+  --color-brand-mastodon-links: #819acf;
 
   --color-brand-mastodon-bg: #1e2028;
   --color-brand-mastodon-dim: #717c9b;
@@ -37,8 +37,8 @@
   --color-border: #38384d;
   --color-dim: var(--color-brand-mastodon-dim);
 
-  --color-accent:  #81c5cf;
-  --color-accent-dark: #27a4b8;
+  --color-accent:  #8196cf;
+  --color-accent-dark: #1f449d;
   --color-accent-dark-50: #27a4b880;
 
   --color-green: #00ba7c;
@@ -65,7 +65,7 @@
   --color-button-text: #f7f9f9;
   --color-ghost-button-text: var(--color-button-text);
   --color-verified: #79bd9a;
-  --color-destructive: #df405a;
+  --color-destructive: #1f449d;
   --color-light-fuchsia-pink: #ff8cfd;
   --color-hashtag: var(--color-accent);
   --color-mention: var(--color-accent);
@@ -232,29 +232,29 @@ body.theme-default.layout-single-column {
   --m-logo: url('../images/theme/m_logo_light.png');
   --color-column: rgba(255, 255, 255, 0.4);
 
-  --color-brand-mastodon: #be2a4d;
-  --color-brand-mastodon-links: #df98a2;
-  --color-accent-dark-50: #be2a4d80;
+  --color-brand-mastodon: #1f449d;
+  --color-brand-mastodon-links: #98b1df;
+  --color-accent-dark-50: #2a51be80;
 
-  --color-accent:#df98a2;
-  --color-accent-dark: #be2a4d;
+  --color-accent:#98a9df;
+  --color-accent-dark: #1f449d;
 
   --color-border: #e9dee0;
-  --color-dim: #c16c80;
+  --color-dim: #6c87c1;
 
   --color-mud: #f0dee2;
-  --color-light-purple: #df98a2;
+  --color-light-purple: #98afdf;
   
-  --color-bg-compose-form: rgb(192 108 128 / .2);
-  --color-bg-compose-form-focus: rgb(192 108 128/ .4);
+  --color-bg-compose-form: rgba(108, 128, 192, 0.2);
+  --color-bg-compose-form-focus: rgba(108, 128, 192, 0.4);
 
 
   --color-bg: #fff;
   --color-fg: #000;
 
   --color-green: #17bf63;
-  --color-red: #e0245e;
-  --color-red-75: #e0245ebf;
+  --color-red: #1f449d;
+  --color-red-75: #2a51be80;
 
   --color-light-shade: #00000005;;
 

@@ -17,8 +17,8 @@
   --color-brand-twitter-mud: #273340;
   --color-brand-twitter-dark: #232543;
   --color-brand-twitter-threaded-line: #425364;
-  --color-brand-mastodon: #27a4b8;
-  --color-brand-mastodon-links: #81c5cf;
+  --color-brand-mastodon: #1f449d;
+  --color-brand-mastodon-links: #818fcf;
   --color-brand-mastodon-bg: #1e2028;
   --color-brand-mastodon-dim: #717c9b;
   --color-brand-mastodon-mud: #272c40;
@@ -35,8 +35,8 @@
   --color-border: #38384d;
   --color-dim: var(--color-brand-mastodon-dim);
 
-  --color-accent:  #81c5cf;
-  --color-accent-dark: #27a4b8;
+  --color-accent:  #818fcf;
+  --color-accent-dark: #1f449d;
   --color-accent-dark-50: #27a4b880;
   
   --color-green: #00ba7c;
@@ -215,23 +215,23 @@ body.theme-default.layout-multiple-columns {
   --color-column: rgba(255, 255, 255, 0.4);
   --color-columns: rgba(255, 255, 255, 0.5);
 
-  --color-brand-mastodon: #be2a4d;
-  --color-brand-mastodon-links: #df98a2;
-  --color-accent-dark-50: #be2a4d80;
+  --color-brand-mastodon: #1f449d;
+  --color-brand-mastodon-links: #98a5df;
+  --color-accent-dark-50: #2a45be80;
 
-  --color-accent:#df98a2;
-  --color-accent-dark: #be2a4d;
+  --color-accent:#98b1df;
+  --color-accent-dark: #1f449d;
 
   --color-bg: #fff;
   --color-fg: #000;
 
   --color-border: #e9dee0;
-  --color-dim: #c16c80;
+  --color-dim: #6c83c1;
   --color-light-text: #1f1b23;
 
   --color-green: #17bf63;
-  --color-red: #e0245e;
-  --color-red-75: #e0245ebf;
+  --color-red: #2456e0;
+  --color-red-75: #2456e0bf;
   --color-focusable-toot: rgba(0, 0, 0, 0.035);
 
   --color-light-shade: #00000005;;
@@ -246,14 +246,14 @@ body.theme-default.layout-multiple-columns {
   --color-dark: #f7f9f9;
   --color-thread-line: #e1e8ed;
   --color-gainsboro: #8899a6;
-  --color-light-purple: #df98a2;
+  --color-light-purple: #98a5df;
   --color-dark-electric-blue: #9088a6;
   --color-bg-75: #ffffffbf;
   --color-accent: var(--color-accent-dark);
   --color-ghost-button-text: var(--color-accent-dark);
 
-  --color-bg-compose-form: rgb(192 108 128 / .2);
-  --color-bg-compose-form-focus: rgb(192 108 128/ .4);
+  --color-bg-compose-form: rgba(108, 121, 192, 0.2);
+  --color-bg-compose-form-focus: rgba(108, 130, 192, 0.4);
   --color-hashtag: var(--color-accent-dark);
   --color-mention: var(--color-accent-dark);
 
