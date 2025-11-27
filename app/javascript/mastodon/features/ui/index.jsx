@@ -603,4 +603,24 @@ class UI extends PureComponent {
 
 }
 
+import React from 'react';
+import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
+import { withRouter } from 'react-router-dom';
+
+import Sidebar from './sidebar';
+import MainContent from './main_content';
+import CustomAudioPlayer from '../../components/CustomAudioPlayer'; // 경로는 실제 위치에 맞게 조정
+
+const UI = () => (
+  <div className="layout">
+    <Sidebar />
+    <MainContent />
+
+    {/* 왼쪽 하단 고정 플레이어 */}
+    <CustomAudioPlayer src="/audio/sample.mp3" />
+  </div>
+);
+
+// 기존 export 유지
 export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
