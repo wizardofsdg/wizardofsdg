@@ -610,7 +610,7 @@ import { withRouter } from 'react-router-dom';
 
 import Sidebar from './sidebar';
 import MainContent from './main_content';
-import CustomAudioPlayer from '../../components/CustomAudioPlayer'; // 경로는 실제 위치에 맞게 조정
+import CustomAudioPlayer from 'app/javascript/mastodon/components/CustomAudioPlayer'; // 경로는 실제 위치에 맞게 조정
 
 const UI = () => (
   <div className="layout">
