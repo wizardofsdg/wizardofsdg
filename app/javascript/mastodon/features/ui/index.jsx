@@ -46,35 +46,67 @@ class UI extends PureComponent {
     layout: PropTypes.string.isRequired,
     dropdownMenuIsOpen: PropTypes.bool,
     username: PropTypes.string,
-    // … 필요한 propTypes 계속
   };
 
   state = {
     draggingOver: false,
   };
 
+  handleBeforeUnload = e => {
+    const { intl, dispatch, isComposing, hasComposingText, hasMediaAttachments } = this.props;
+    dispatch(synchronouslySubmitMarkers());
+    if (isComposing && (hasComposingText || hasMediaAttachments)) {
+      e.preventDefault();
+      e.returnValue = intl.formatMessage(messages.beforeUnload);
+    }
+  };
+
+  componentDidMount () {
+    const { signedIn } = this.context.identity;
+
+    window.addEventListener('focus', this.handleWindowFocus, false);
+    window.addEventListener('blur', this.handleWindowBlur, false);
+    window.addEventListener('beforeunload', this.handleBeforeUnload, false);
+    window.addEventListener('resize', this.handleResize, { passive: true });
+
+    document.addEventListener('dragenter', this.handleDragEnter, false);
+    document.addEventListener('dragover', this.handleDragOver, false);
+    document.addEventListener('drop', this.handleDrop, false);
+    document.addEventListener('dragleave', this.handleDragLeave, false);
+    document.addEventListener('dragend', this.handleDragEnd, false);
+
+    if ('serviceWorker' in  navigator) {
+      navigator.serviceWorker.addEventListener('message', this.handleServiceWorkerPostMessage);
+    }
+
+    if (signedIn) {
+      this.props.dispatch(fetchMarkers());
+      this.props.dispatch(expandHomeTimeline());
+      this.props.dispatch(expandNotifications());
+      this.props.dispatch(fetchServerTranslationLanguages());
+
+      setTimeout(() => this.props.dispatch(fetchServer()), 3000);
+    }
+
+    this.hotkeys.__mousetrap__.stopCallback = (e, element) => {
+      return ['TEXTAREA', 'SELECT', 'INPUT'].includes(element.tagName);
+    };
+
   render () {
     const { location, children, layout } = this.props;
-
     return (
       <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
-        <div className={classNames('ui', { 'is-composing': this.props.isComposing })}
-             ref={this.setRef}
-             style={{ pointerEvents: this.props.dropdownMenuIsOpen ? 'none' : null }}>
+        <div className="ui" ref={this.setRef}>
           <Header />
-
           <SwitchingColumnsArea
             location={location}
             singleColumn={layout === 'mobile' || layout === 'single-column'}
           >
             {children}
           </SwitchingColumnsArea>
-
-          {/* 환경설정 페이지에서는 UI 숨김 */}
           {!location.pathname.startsWith('/settings') && (
             <GlobalAudioPlayer src="/path/to/music.mp3" />
           )}
-
           <NotificationsContainer />
           <LoadingBarContainer className="loading-bar" />
           <ModalContainer />
@@ -84,6 +116,9 @@ class UI extends PureComponent {
     );
   }
 }
+
+export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
+
 
 export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
 
@@ -421,36 +456,7 @@ class SwitchingColumnsArea extends PureComponent {
     }
   };
 
-  componentDidMount () {
-    const { signedIn } = this.context.identity;
 
-    window.addEventListener('focus', this.handleWindowFocus, false);
-    window.addEventListener('blur', this.handleWindowBlur, false);
-    window.addEventListener('beforeunload', this.handleBeforeUnload, false);
-    window.addEventListener('resize', this.handleResize, { passive: true });
-
-    document.addEventListener('dragenter', this.handleDragEnter, false);
-    document.addEventListener('dragover', this.handleDragOver, false);
-    document.addEventListener('drop', this.handleDrop, false);
-    document.addEventListener('dragleave', this.handleDragLeave, false);
-    document.addEventListener('dragend', this.handleDragEnd, false);
-
-    if ('serviceWorker' in  navigator) {
-      navigator.serviceWorker.addEventListener('message', this.handleServiceWorkerPostMessage);
-    }
-
-    if (signedIn) {
-      this.props.dispatch(fetchMarkers());
-      this.props.dispatch(expandHomeTimeline());
-      this.props.dispatch(expandNotifications());
-      this.props.dispatch(fetchServerTranslationLanguages());
-
-      setTimeout(() => this.props.dispatch(fetchServer()), 3000);
-    }
-
-    this.hotkeys.__mousetrap__.stopCallback = (e, element) => {
-      return ['TEXTAREA', 'SELECT', 'INPUT'].includes(element.tagName);
-    };
   }
 
   componentWillUnmount () {
