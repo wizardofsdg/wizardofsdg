@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
-      playBtn.textContent = "❚❚"; // 재생 중이면 일시정지 아이콘
+      playBtn.textContent = "⏸︎"; // 재생 중이면 일시정지 아이콘
     } else {
       audio.pause();
       playBtn.textContent = "▶"; // 멈추면 재생 아이콘
