@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!audio || !progress || !playBtn) return;
 
+  audio.loop = true;
+
   // 초기 상태: 재생 버튼
   playBtn.textContent = "▶";
 
