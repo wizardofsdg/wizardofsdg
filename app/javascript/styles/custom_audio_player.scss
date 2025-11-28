@@ -2,15 +2,15 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 240px; /* 메뉴바 너비에 맞춤 */
+  width: 140px; /* 메뉴바 너비 */
   background: var(--background-color);
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  box-shadow: none;
-  z-index: 999;
+  gap: 12px; /* 버튼과 슬라이더 사이 여백 */
   border-top: 1px solid var(--border-color);
+  z-index: 999;
 
   button {
     background: none;
@@ -18,6 +18,7 @@
     padding: 0;
     font-size: 1.2rem;
     cursor: pointer;
+    flex-shrink: 0; /* 버튼 크기 고정 */
   }
 
   button:hover {
@@ -25,12 +26,13 @@
     opacity: 0.8;
   }
 
-
   input[type="range"] {
-    width: 100%;
+    flex: 1; /* 남은 공간을 모두 차지 */
+    max-width: 160px; /* 최대 길이 제한 */
     accent-color: var(--primary-color);
   }
 
+  /* 슬라이더 트랙/썸 스타일 */
   input[type="range"]::-webkit-slider-runnable-track {
     background: var(--background-color);
     height: 6px;
@@ -46,6 +48,7 @@
     cursor: pointer;
     margin-top: -4px;
   }
+
   input[type="range"]::-moz-range-track {
     background: var(--background-color);
     height: 6px;
@@ -60,6 +63,4 @@
     width: 14px;
     cursor: pointer;
   }
-
 }
-
