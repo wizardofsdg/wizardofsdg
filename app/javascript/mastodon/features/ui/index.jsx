@@ -31,6 +31,35 @@ import ColumnsAreaContainer from './containers/columns_area_container';
 import LoadingBarContainer from './containers/loading_bar_container';
 import ModalContainer from './containers/modal_container';
 import NotificationsContainer from './containers/notifications_container';
+import GlobalAudioPlayer from './components/global_audio_player';
+
+class UI extends PureComponent {
+  render () {
+    const { location } = this.props;
+
+    return (
+      <HotKeys ...>
+        <div className="ui" ref={this.setRef}>
+          <Header />
+          <SwitchingColumnsArea location={location} singleColumn={...}>
+            {children}
+          </SwitchingColumnsArea>
+
+          {/* 환경설정 페이지에서는 UI 숨김 */}
+          {!location.pathname.startsWith('/settings') && (
+            <GlobalAudioPlayer src="/path/to/music.mp3" />
+          )}
+
+          <NotificationsContainer />
+          <LoadingBarContainer className='loading-bar' />
+          <ModalContainer />
+          <UploadArea ... />
+        </div>
+      </HotKeys>
+    );
+  }
+}
+
 import {
   Compose,
   Status,
@@ -605,7 +634,9 @@ class UI extends PureComponent {
         </div>
       </HotKeys>
     );
+    
   }
+  
 }
 export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
 
