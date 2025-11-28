@@ -35,15 +35,21 @@ import GlobalAudioPlayer from './components/global_audio_player';
 
 class UI extends PureComponent {
   render () {
-    const { location } = this.props;
+    const { location, children, layout } = this.props;
 
     return (
-      <HotKeys ...>
+      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
         <div className="ui" ref={this.setRef}>
           <Header />
-          <SwitchingColumnsArea location={location} singleColumn={...}>
-            {children}
+
+          <SwitchingColumnsArea
+            location={location}
+            singleColumn={layout === 'mobile' || layout === 'single-column'}
+          >
+            
+          {children}
           </SwitchingColumnsArea>
+
 
           {/* 환경설정 페이지에서는 UI 숨김 */}
           {!location.pathname.startsWith('/settings') && (
@@ -51,14 +57,16 @@ class UI extends PureComponent {
           )}
 
           <NotificationsContainer />
-          <LoadingBarContainer className='loading-bar' />
+          <LoadingBarContainer className="loading-bar" />
           <ModalContainer />
-          <UploadArea ... />
+
+          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
         </div>
       </HotKeys>
     );
   }
 }
+
 
 import {
   Compose,
