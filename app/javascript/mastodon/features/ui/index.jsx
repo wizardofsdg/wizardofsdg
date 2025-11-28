@@ -610,7 +610,7 @@ import { withRouter } from 'react-router-dom';
 
 import Sidebar from './sidebar';
 import MainContent from './main_content';
-import CustomAudioPlayer from '../../components/custom_audio_player'; // 경로는 실제 위치에 맞게 조정
+import customAudioPlayer from '../../components/custom_audio_player'; // 경로는 실제 위치에 맞게 조정
 
 const UI = () => (
   <div className="layout">
