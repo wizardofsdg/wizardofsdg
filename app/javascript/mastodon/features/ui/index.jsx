@@ -423,8 +423,6 @@ class SwitchingColumnsArea extends PureComponent {
   }
 }
 
-export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
-
 
   closeUploadModal = () => {
     this.setState({ draggingOver: false });
