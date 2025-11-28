@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   progress.addEventListener("input", () => {
     audio.currentTime = progress.value;
   });
-=
+
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       audio.pause();
     }
   });
-=
+
   audio.addEventListener("play", () => {
     playBtn.textContent = "⏸️";
   });
