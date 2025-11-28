@@ -584,7 +584,11 @@ class UI extends PureComponent {
 
     return (
       <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
-        <div className={classNames('ui', { 'is-composing': isComposing })} ref={this.setRef} style={{ pointerEvents: dropdownMenuIsOpen ? 'none' : null }}>
+        <div
+          className={classNames('ui', { 'is-composing': isComposing })}
+          ref={this.setRef}
+          style={{ pointerEvents: dropdownMenuIsOpen ? 'none' : null }}
+        >
           <Header />
 
           <SwitchingColumnsArea location={location} singleColumn={layout === 'mobile' || layout === 'single-column'}>
@@ -596,36 +600,13 @@ class UI extends PureComponent {
           <LoadingBarContainer className='loading-bar' />
           <ModalContainer />
           <UploadArea active={draggingOver} onClose={this.closeUploadModal} />
+
+          {/* 🎵 여기 추가: 왼쪽 하단 고정 오디오 플레이어 */}
+          <CustomAudioPlayer src="/audio/sample.mp3" alt="배경 음악 플레이어" />
         </div>
       </HotKeys>
     );
   }
-
 }
-import React from 'react';
-import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
-
-import Sidebar from './sidebar';
-import MainContent from './main_content';
-import CustomAudioPlayer from '../../components/custom_audio_player'; // 경로는 실제 위치에 맞게 조정
-
-// Redux 상태 매핑
-const mapStateToProps = state => ({
-  locale: state.getIn(['meta', 'locale']),
-});
-
-const UI = () => (
-  <div className="layout">
-    <Sidebar />
-    <MainContent />
-
-    {/* 왼쪽 하단 고정 플레이어 */}
-    <CustomAudioPlayer src="/audio/sample.mp3" alt="배경 음악 플레이어" />
-  </div>
-);
-
-// 기존 export 유지
 export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
 
