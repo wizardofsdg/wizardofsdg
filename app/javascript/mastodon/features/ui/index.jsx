@@ -31,8 +31,6 @@ import ColumnsAreaContainer from './containers/columns_area_container';
 import LoadingBarContainer from './containers/loading_bar_container';
 import ModalContainer from './containers/modal_container';
 import NotificationsContainer from './containers/notifications_container';
-import CustomAudioPlayer from '../../components/custom_audio_player';
-import '../../../styles/custom_audio_player.scss';
 import {
   Compose,
   Status,
@@ -603,8 +601,7 @@ class UI extends PureComponent {
           <ModalContainer />
           <UploadArea active={draggingOver} onClose={this.closeUploadModal} />
 
-          {/* 🎵 여기 추가: 왼쪽 하단 고정 오디오 플레이어 */}
-          <CustomAudioPlayer src="/audio/sample.mp3" alt="배경 음악 플레이어" />
+      
         </div>
       </HotKeys>
     );
