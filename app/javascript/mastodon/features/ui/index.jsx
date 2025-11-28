@@ -32,6 +32,44 @@ import LoadingBarContainer from './containers/loading_bar_container';
 import ModalContainer from './containers/modal_container';
 import NotificationsContainer from './containers/notifications_container';
 import GlobalAudioPlayer from './components/global_audio_player';
+import {
+  Compose,
+  Status,
+  GettingStarted,
+  KeyboardShortcuts,
+  Firehose,
+  AccountTimeline,
+  AccountGallery,
+  HomeTimeline,
+  LocalTimeline,
+  Followers,
+  Following,
+  AccountDirectMessages,
+  Reblogs,
+  Favourites,
+  DirectTimeline,
+  HashtagTimeline,
+  Notifications,
+  FollowRequests,
+  FavouritedStatuses,
+  BookmarkedStatuses,
+  FollowedTags,
+  ListTimeline,
+  Blocks,
+  DomainBlocks,
+  Mutes,
+  PinnedStatuses,
+  Lists,
+  Explore,
+  Onboarding,
+  About,
+  PrivacyPolicy
+} from './util/async-components';
+import { WrappedSwitch, WrappedRoute } from './util/react_router_helpers';
+
+// Dummy import, to make sure that <Status /> ends up in the application bundle.
+// Without this it ends up in ~8 very commonly used bundles.
+import '../../components/status';
 
 class UI extends PureComponent {
   static contextTypes = {
@@ -92,44 +130,6 @@ class UI extends PureComponent {
       return ['TEXTAREA', 'SELECT', 'INPUT'].includes(element.tagName);
     };
 
-import {
-  Compose,
-  Status,
-  GettingStarted,
-  KeyboardShortcuts,
-  Firehose,
-  AccountTimeline,
-  AccountGallery,
-  HomeTimeline,
-  LocalTimeline,
-  Followers,
-  Following,
-  AccountDirectMessages,
-  Reblogs,
-  Favourites,
-  DirectTimeline,
-  HashtagTimeline,
-  Notifications,
-  FollowRequests,
-  FavouritedStatuses,
-  BookmarkedStatuses,
-  FollowedTags,
-  ListTimeline,
-  Blocks,
-  DomainBlocks,
-  Mutes,
-  PinnedStatuses,
-  Lists,
-  Explore,
-  Onboarding,
-  About,
-  PrivacyPolicy
-} from './util/async-components';
-import { WrappedSwitch, WrappedRoute } from './util/react_router_helpers';
-
-// Dummy import, to make sure that <Status /> ends up in the application bundle.
-// Without this it ends up in ~8 very commonly used bundles.
-import '../../components/status';
 
 const messages = defineMessages({
   beforeUnload: { id: 'ui.beforeunload', defaultMessage: 'Your draft will be lost if you leave Mastodon.' },
