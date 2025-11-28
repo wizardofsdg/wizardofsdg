@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const progress = document.getElementById("progress");
   const playBtn = document.getElementById("play");
 
+  if (!audio || !progress || !playBtn) return;
+
+  // 초기 상태
+  playBtn.textContent = "▶";
+
   audio.addEventListener("loadedmetadata", () => {
     progress.max = audio.duration;
   });
@@ -17,11 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
-      audio.play();
-      playBtn.textContent = "❚❚";
+      audio.play().then(() => {
+        playBtn.textContent = "❚❚"; // 재생 중이면 일시정지 아이콘
+      });
     } else {
       audio.pause();
-      playBtn.textContent = "▶";
+      playBtn.textContent = "▶"; // 멈추면 재생 아이콘
     }
   });
 });
