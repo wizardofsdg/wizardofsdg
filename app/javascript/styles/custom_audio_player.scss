@@ -76,4 +76,9 @@
     right: 0;
     width: 100%;    /* 작은 화면에서는 전체 너비 */
   }
+
+  body.settings .custom-audio-player {
+    display: none;
+  }
+
 }
