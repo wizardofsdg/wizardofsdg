@@ -253,13 +253,6 @@ class SwitchingColumnsArea extends PureComponent {
 
 }
 
-import GlobalAudioPlayer from './components/global_audio_player';
-
-class UI extends PureComponent {
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
-    identity: PropTypes.object.isRequired,
-  };
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
