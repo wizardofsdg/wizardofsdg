@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!audio || !progress || !playBtn) return;
 
-  // 초기 상태
+  // 초기 상태: 재생 버튼
   playBtn.textContent = "▶";
 
   audio.addEventListener("loadedmetadata", () => {
