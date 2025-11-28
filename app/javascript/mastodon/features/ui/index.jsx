@@ -92,36 +92,6 @@ class UI extends PureComponent {
       return ['TEXTAREA', 'SELECT', 'INPUT'].includes(element.tagName);
     };
 
-  render () {
-    const { location, children, layout } = this.props;
-    return (
-      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
-        <div className="ui" ref={this.setRef}>
-          <Header />
-          <SwitchingColumnsArea
-            location={location}
-            singleColumn={layout === 'mobile' || layout === 'single-column'}
-          >
-            {children}
-          </SwitchingColumnsArea>
-          {!location.pathname.startsWith('/settings') && (
-            <GlobalAudioPlayer src="/path/to/music.mp3" />
-          )}
-          <NotificationsContainer />
-          <LoadingBarContainer className="loading-bar" />
-          <ModalContainer />
-          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
-        </div>
-      </HotKeys>
-    );
-  }
-}
-
-export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
-
-
-export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
-
 import {
   Compose,
   Status,
@@ -426,6 +396,35 @@ class SwitchingColumnsArea extends PureComponent {
   dataTransferIsText = (dataTransfer) => {
     return (dataTransfer && Array.from(dataTransfer.types).filter((type) => type === 'text/plain').length === 1);
   };
+
+    
+  render () {
+    const { location, children, layout } = this.props;
+    return (
+      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
+        <div className="ui" ref={this.setRef}>
+          <Header />
+          <SwitchingColumnsArea
+            location={location}
+            singleColumn={layout === 'mobile' || layout === 'single-column'}
+          >
+            {children}
+          </SwitchingColumnsArea>
+          {!location.pathname.startsWith('/settings') && (
+            <GlobalAudioPlayer src="/path/to/music.mp3" />
+          )}
+          <NotificationsContainer />
+          <LoadingBarContainer className="loading-bar" />
+          <ModalContainer />
+          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
+        </div>
+      </HotKeys>
+    );
+  }
+}
+
+export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
+
 
   closeUploadModal = () => {
     this.setState({ draggingOver: false });
