@@ -121,18 +121,33 @@ class DropdownMenu extends PureComponent {
       return <li key={`sep-${i}`} className='dropdown-menu__separator' />;
     }
 
-    const isExternal = href.startsWith('http');
+    const { href, text, dangerous, method } = option; // option에서 구조분해 할당
+    const isExternal = href && href.startsWith('http');
     const target = isExternal ? '_blank' : '_self';
 
-
     return (
-      <li className={classNames('dropdown-menu__item', { 'dropdown-menu__item--dangerous': dangerous })} key={`${text}-${i}`}>
-        <a href={href} target={target} data-method={method} rel='noopener noreferrer' role='button' tabIndex={0} ref={i === 0 ? this.setFocusRef : null} onClick={this.handleClick} onKeyPress={this.handleItemKeyPress} data-index={i}>
+      <li
+        className={classNames('dropdown-menu__item', { 'dropdown-menu__item--dangerous': dangerous })}
+       key={`${text}-${i}`}
+      >
+        <a
+          href={href}
+          target={target}
+          data-method={method}
+          rel='noopener noreferrer'
+          role='button'
+          tabIndex={0}
+          ref={i === 0 ? this.setFocusRef : null}
+          onClick={this.handleClick}
+          onKeyPress={this.handleItemKeyPress}
+          data-index={i}
+        >
           {text}
         </a>
       </li>
     );
   };
+
 
   render () {
     const { items, scrollable, renderHeader, loading } = this.props;
