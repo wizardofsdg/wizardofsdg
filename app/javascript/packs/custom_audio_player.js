@@ -29,4 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
       playBtn.textContent = "▶️";
     }
   });
+  document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.pathname.startsWith("/settings")) {
+    document.body.classList.add("settings");
+  }
+  });
+
 });
