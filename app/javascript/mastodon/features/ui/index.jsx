@@ -33,40 +33,6 @@ import ModalContainer from './containers/modal_container';
 import NotificationsContainer from './containers/notifications_container';
 import GlobalAudioPlayer from './components/global_audio_player';
 
-class UI extends PureComponent {
-  render () {
-    const { location, children, layout } = this.props;
-
-    return (
-      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
-        <div className="ui" ref={this.setRef}>
-          <Header />
-
-          <SwitchingColumnsArea
-            location={location}
-            singleColumn={layout === 'mobile' || layout === 'single-column'}
-          >
-            
-          {children}
-          </SwitchingColumnsArea>
-
-
-          {/* 환경설정 페이지에서는 UI 숨김 */}
-          {!location.pathname.startsWith('/settings') && (
-            <GlobalAudioPlayer src="/path/to/music.mp3" />
-          )}
-
-          <NotificationsContainer />
-          <LoadingBarContainer className="loading-bar" />
-          <ModalContainer />
-
-          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
-        </div>
-      </HotKeys>
-    );
-  }
-}
-
 
 import {
   Compose,
@@ -288,11 +254,37 @@ class SwitchingColumnsArea extends PureComponent {
 }
 
 class UI extends PureComponent {
+  render () {
+    const { location, children, layout } = this.props;
 
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
-    identity: PropTypes.object.isRequired,
-  };
+    return (
+      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
+        <div className="ui" ref={this.setRef}>
+          <Header />
+
+          <SwitchingColumnsArea
+            location={location}
+            singleColumn={layout === 'mobile' || layout === 'single-column'}
+          >
+            {children}
+          </SwitchingColumnsArea>
+
+          {/* 환경설정 페이지에서는 UI 숨김 */}
+          {!location.pathname.startsWith('/settings') && (
+            <GlobalAudioPlayer src="/path/to/music.mp3" />
+          )}
+
+          <NotificationsContainer />
+          <LoadingBarContainer className="loading-bar" />
+          <ModalContainer />
+          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
+        </div>
+      </HotKeys>
+    );
+  }
+}
+
+export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
