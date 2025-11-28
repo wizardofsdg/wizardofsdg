@@ -33,6 +33,59 @@ import ModalContainer from './containers/modal_container';
 import NotificationsContainer from './containers/notifications_container';
 import GlobalAudioPlayer from './components/global_audio_player';
 
+class UI extends PureComponent {
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+    identity: PropTypes.object.isRequired,
+  };
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    children: PropTypes.node,
+    location: PropTypes.object,
+    layout: PropTypes.string.isRequired,
+    dropdownMenuIsOpen: PropTypes.bool,
+    username: PropTypes.string,
+    // … 필요한 propTypes 계속
+  };
+
+  state = {
+    draggingOver: false,
+  };
+
+  render () {
+    const { location, children, layout } = this.props;
+
+    return (
+      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
+        <div className={classNames('ui', { 'is-composing': this.props.isComposing })}
+             ref={this.setRef}
+             style={{ pointerEvents: this.props.dropdownMenuIsOpen ? 'none' : null }}>
+          <Header />
+
+          <SwitchingColumnsArea
+            location={location}
+            singleColumn={layout === 'mobile' || layout === 'single-column'}
+          >
+            {children}
+          </SwitchingColumnsArea>
+
+          {/* 환경설정 페이지에서는 UI 숨김 */}
+          {!location.pathname.startsWith('/settings') && (
+            <GlobalAudioPlayer src="/path/to/music.mp3" />
+          )}
+
+          <NotificationsContainer />
+          <LoadingBarContainer className="loading-bar" />
+          <ModalContainer />
+          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
+        </div>
+      </HotKeys>
+    );
+  }
+}
+
+export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
 
 import {
   Compose,
@@ -254,56 +307,6 @@ class SwitchingColumnsArea extends PureComponent {
 }
 
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    children: PropTypes.node,
-    isComposing: PropTypes.bool,
-    hasComposingText: PropTypes.bool,
-    hasMediaAttachments: PropTypes.bool,
-    canUploadMore: PropTypes.bool,
-    location: PropTypes.object,
-    intl: PropTypes.object.isRequired,
-    dropdownMenuIsOpen: PropTypes.bool,
-    layout: PropTypes.string.isRequired,
-    firstLaunch: PropTypes.bool,
-    username: PropTypes.string,
-  };
-
-  state = {
-    draggingOver: false,
-  };
-
-  render () {
-    const { location, children, layout } = this.props;
-
-    return (
-      <HotKeys keyMap={keyMap} handlers={handlers} ref={this.setHotkeysRef} attach={window} focused>
-        <div className="ui" ref={this.setRef}>
-          <Header />
-
-          <SwitchingColumnsArea
-            location={location}
-            singleColumn={layout === 'mobile' || layout === 'single-column'}
-          >
-            {children}
-          </SwitchingColumnsArea>
-
-          {/* 환경설정 페이지에서는 UI 숨김 */}
-          {!location.pathname.startsWith('/settings') && (
-            <GlobalAudioPlayer src="/path/to/music.mp3" />
-          )}
-
-          <NotificationsContainer />
-          <LoadingBarContainer className="loading-bar" />
-          <ModalContainer />
-          <UploadArea active={this.state.draggingOver} onClose={this.closeUploadModal} />
-        </div>
-      </HotKeys>
-    );
-  }
-}
-
-export default connect(mapStateToProps)(injectIntl(withRouter(UI)));
 
   handleBeforeUnload = e => {
     const { intl, dispatch, isComposing, hasComposingText, hasMediaAttachments } = this.props;
