@@ -23,11 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
+      playBtn.textContent = "⏸️"; // 클릭 직후 바로 바꿔줌
     } else {
       audio.pause();
+      playBtn.textContent = "▶"; // 클릭 직후 바로 바꿔줌
     }
   });
 
+  // 오디오 상태 이벤트로 최종 동기화
   audio.addEventListener("play", () => {
     playBtn.textContent = "⏸️";
   });
