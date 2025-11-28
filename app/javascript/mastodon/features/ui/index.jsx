@@ -253,6 +253,8 @@ class SwitchingColumnsArea extends PureComponent {
 
 }
 
+import GlobalAudioPlayer from './components/global_audio_player';
+
 class UI extends PureComponent {
   static contextTypes = {
     router: PropTypes.object.isRequired,
@@ -293,6 +295,7 @@ class UI extends PureComponent {
             {children}
           </SwitchingColumnsArea>
 
+          {/* 환경설정 페이지에서는 UI 숨김 */}
           {!location.pathname.startsWith('/settings') && (
             <GlobalAudioPlayer src="/path/to/music.mp3" />
           )}
