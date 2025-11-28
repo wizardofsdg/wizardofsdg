@@ -32,7 +32,7 @@ import LoadingBarContainer from './containers/loading_bar_container';
 import ModalContainer from './containers/modal_container';
 import NotificationsContainer from './containers/notifications_container';
 import CustomAudioPlayer from '../../components/custom_audio_player';
-import '../../components/custom_audio_player.scss';
+import '../../styles/custom_audio_player.scss';
 import {
   Compose,
   Status,
