@@ -1,15 +1,17 @@
 .custom-audio-player {
-  position: sticky;
-  bottom: 0;
-  margin-left: 60px;
-  margin-right: 180px;
+  position: fixed;
+  bottom: 20px;              // 화면 하단에서 살짝 띄움
+  left: 20px;                // 왼쪽 고정
+  width: 60px;               // 메뉴바 너비에 맞춤
+  height: auto;
   background: var(--background-color);
-  padding: 10px;
+  padding: 8px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;    // 세로 정렬
   align-items: center;
-  gap: 12px;
-  border-top: 1px solid var(--border-color);
+  gap: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 999;
 
   button {
@@ -19,7 +21,6 @@
     height: 32px;
     font-size: 1.2rem;
     cursor: pointer;
-    flex: 0 0 32px;
   }
 
   button:hover {
@@ -27,48 +28,15 @@
     opacity: 0.8;
   }
 
-  button:active {
-    transform: scale(1);
-  }
-
   input[type="range"] {
-    flex: 1;
-    max-width: 160px;
+    writing-mode: bt-lr;     // 수직 슬라이더로 바꾸려면 이 옵션
+    transform: rotate(270deg);
+    width: 100px;
+    height: 32px;
     accent-color: var(--primary-color);
   }
 
-  input[type="range"]::-webkit-slider-runnable-track {
-    background: var(--background-color);
-    height: 6px;
-    border-radius: 3px;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    background: var(--accent-color);
-    border: 2px solid var(--on-primary-color);
-    border-radius: 50%;
-    height: 14px;
-    width: 14px;
-    cursor: pointer;
-    margin-top: -4px;
-  }
-
-  input[type="range"]::-moz-range-track {
-    background: var(--background-color);
-    height: 6px;
-    border-radius: 3px;
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    background: var(--accent-color);
-    border: 2px solid var(--on-primary-color);
-    border-radius: 50%;
-    height: 14px;
-    width: 14px;
-    cursor: pointer;
-  }
-
-  // 메뉴바 기준 반응형 숨김 처리
+  // 반응형: 메뉴바 기준으로 숨김
   @media (max-width: 1024px) {
     display: none;
   }
