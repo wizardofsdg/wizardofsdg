@@ -1,32 +1,45 @@
+.navigation-panel {
+  width: 60px; // 메뉴바 폭 (테마에 따라 다를 수 있음)
+}
+
 .custom-audio-player {
   position: fixed;
   bottom: 0;
-  left: 40px;
-  width: 80px;
+  left: 60px;              // 메뉴바 폭만큼 띄워서 오른쪽에 붙임
+  width: 120px;            // 오디오 플레이어 자체 폭
   background: var(--background-color);
   padding: 6px;
   display: flex;
-  flex-direction: column;       // 세로로 정렬
+  flex-direction: row;     // 가로 배치
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
   border-top: 1px solid var(--border-color);
-  z-index: 1000;                // 메뉴바보다 높게
+  z-index: 1000;
 
   button {
     background: none;
     border: none;
+    width: 24px;
+    height: 24px;
     font-size: 1.2rem;
     cursor: pointer;
     color: var(--text-color);
   }
 
+  button:hover {
+    color: var(--accent-color);
+    opacity: 0.8;
+  }
+
   input[type="range"] {
-    width: 60px;                // 좁은 폭에 맞게 슬라이더 길이 제한
+    flex: 1;
+    max-width: 60px;       // 좁은 영역에 맞게 슬라이더 길이 제한
     accent-color: var(--primary-color);
   }
 
   @media (max-width: 1024px) {
-    display: none;
+    display: none;         // 메뉴바 접힐 때 같이 숨김
   }
 
   body.settings & {
