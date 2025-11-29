@@ -21,12 +21,6 @@
     color: var(--text-color);
   }
 
-  input[type="range"] {
-    flex: 1;
-    max-width: 100px;
-    accent-color: var(--primary-color);
-  }
-
   @media (max-width: 1178px) {
     left: 10px;
     width: 100%; // 또는 100vw
