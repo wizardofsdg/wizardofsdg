@@ -32,7 +32,8 @@
     left: 0;
     width: 100%; // 또는 100vw
     justify-content: flex-start;
-    
+  }
+  
   // 모바일 화면: 숨김
   @media (max-width: 924px) {
     display: none;
