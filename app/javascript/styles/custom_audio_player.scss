@@ -1,15 +1,14 @@
 .custom-audio-player {
   position: fixed;
-  bottom: 20px;              // 화면 하단에서 살짝 띄움
-  left: 20px;                // 왼쪽 고정
-  width: 60px;               // 메뉴바 너비에 맞춤
-  height: auto;
+  bottom: 20px;
+  left: 60px;                // 기본 왼쪽 여백 (전체 화면 기준)
+  width: auto;
   background: var(--background-color);
-  padding: 8px;
+  padding: 10px;
   display: flex;
-  flex-direction: column;    // 세로 정렬
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   z-index: 999;
@@ -29,15 +28,22 @@
   }
 
   input[type="range"] {
-    writing-mode: bt-lr;     // 수직 슬라이더로 바꾸려면 이 옵션
-    transform: rotate(270deg);
-    width: 100px;
-    height: 32px;
+    flex: 1;
+    max-width: 160px;
     accent-color: var(--primary-color);
   }
 
-  // 반응형: 메뉴바 기준으로 숨김
+  // 중간 화면일 때 왼쪽 여백 줄이기
+  @media (max-width: 1280px) {
+    left: 40px;
+  }
+
   @media (max-width: 1024px) {
+    left: 20px;
+  }
+
+  // 모바일 화면에서는 숨김
+  @media (max-width: 768px) {
     display: none;
   }
 
