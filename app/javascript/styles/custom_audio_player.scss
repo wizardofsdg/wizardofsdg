@@ -1,5 +1,5 @@
 .custom-audio-player {
-  position: fixed;
+  position: sticky;         // 페이지 내부 고정
   bottom: 0;
   left: 60px;
   right: 180px;
@@ -38,7 +38,6 @@
     accent-color: var(--primary-color);
   }
 
-  /* 슬라이더 트랙/썸 스타일 */
   input[type="range"]::-webkit-slider-runnable-track {
     background: var(--background-color);
     height: 6px;
@@ -70,11 +69,12 @@
     cursor: pointer;
   }
 
-  /* 반응형 처리 */
-  @media (max-width: 768px) {
-    display: none;   /* 작은 화면에서는 아예 숨김 */
+  // 메뉴바 기준 반응형 숨김 처리
+  @media (max-width: 1024px) {
+    display: none;
   }
 
+  // 설정 페이지에서는 숨김
   body.settings & {
     display: none;
   }
