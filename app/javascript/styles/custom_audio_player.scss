@@ -1,8 +1,12 @@
+:root {
+  --navigation-panel-width: 80px; // 기본 메뉴바 폭
+}
+
 .custom-audio-player {
   position: fixed;
   bottom: 0;
-  left: 60px;              // 메뉴바 폭 기준
-  width: 160px;            // 오디오 플레이어 폭 확장
+  left: var(--navigation-panel-width); // 메뉴바 폭만큼 오른쪽으로
+  width: 160px;
   background: var(--background-color);
   padding: 6px 8px;
   display: flex;
@@ -13,29 +17,15 @@
   border-top: 1px solid var(--border-color);
   z-index: 1000;
 
-  button {
-    background: none;
-    border: none;
-    width: 24px;
-    height: 24px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: var(--text-color);
-  }
-
-  button:hover {
-    color: var(--accent-color);
-    opacity: 0.8;
-  }
-
   input[type="range"] {
     flex: 1;
-    max-width: 100px;       // 슬라이더 길이 확장
+    max-width: 100px;
     accent-color: var(--primary-color);
   }
 
   @media (max-width: 1024px) {
-    display: none;
+    left: 0;              // 화면이 좁아지면 메뉴바처럼 왼쪽 끝으로 붙음
+    width: 100%;          // 필요하면 전체 폭 차지
   }
 
   body.settings & {
