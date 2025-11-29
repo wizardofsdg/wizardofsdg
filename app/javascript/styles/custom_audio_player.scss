@@ -1,24 +1,26 @@
 .custom-audio-player {
   position: fixed;
-  bottom: 20px;
-  left: 60px;                // 기본 왼쪽 여백 (전체 화면 기준)
-  width: auto;
+  bottom: 0;
+  left: 0;
+  width: 80px;               // 메뉴바 폭에 맞춤
   background: var(--background-color);
-  padding: 10px;
+  padding: 6px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row;       // 가로 배치
   align-items: center;
-  gap: 12px;
-  border-radius: 8px;
+  justify-content: center;
+  gap: 6px;
+  border-top: 1px solid var(--border-color);
   z-index: 999;
 
   button {
     background: none;
     border: none;
-    width: 32px;
-    height: 32px;
-    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    font-size: 1.2rem;       // 아이콘 크기
     cursor: pointer;
+    color: var(--text-color);
   }
 
   button:hover {
@@ -28,26 +30,16 @@
 
   input[type="range"] {
     flex: 1;
-    max-width: 160px;
+    max-width: 40px;         // 좁은 영역에 맞게 슬라이더 길이 제한
     accent-color: var(--primary-color);
   }
 
-  // 중간 화면일 때 왼쪽 여백 줄이기
-  @media (max-width: 1280px) {
-    left: 40px;
+  @media (max-width: 1024px) {
+    display: none;           // 메뉴바 접힐 때 같이 숨김
   }
 
-  @media (max-width: 800px) {
-    left: 20px;
-  }
-
-  // 모바일 화면에서는 숨김
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  // 설정 페이지에서는 숨김
   body.settings & {
     display: none;
   }
 }
+
