@@ -1,12 +1,8 @@
-
 .custom-audio-player {
   position: fixed;
   bottom: 0;
-
-  // 넓은 화면에서는 메뉴바 폭만큼 띄움
-  left: 60px;
+  left: 60px;              // 넓은 화면에서 메뉴바 폭만큼 띄움
   width: 160px;
-
   background: var(--background-color);
   padding: 6px 8px;
   display: flex;
@@ -33,11 +29,9 @@
     accent-color: var(--primary-color);
   }
 
-  // 화면이 좁아지면 메뉴바처럼 왼쪽 끝으로 붙음
-  @media (max-width: 920px) {
-    left: 0;
-    width: 100%; // 또는 100vw
-    justify-content: flex-start;
+  // 좁은 화면에서는 아예 숨김
+  @media (max-width: 1024px) {
+    display: none;
   }
 
   body.settings & {
