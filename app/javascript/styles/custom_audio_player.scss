@@ -1,8 +1,8 @@
 .custom-audio-player {
   position: fixed;
   bottom: 20px;
-  left: 60px;               // 메뉴바 폭 기준
-  width: 160px;
+  left: 80px;               // 메뉴바 폭 기준
+  width: 140px;
   background: var(--background-color);
   padding: 6px 8px;
   display: flex;
@@ -29,13 +29,13 @@
   }
 
   @media (max-width: 1177px) {
-    left: 0;
+    left: 10;
     width: 100%; // 또는 100vw
     justify-content: flex-start;
   }
   
   // 모바일 화면: 숨김
-  @media (max-width: 880px) {
+  @media (max-width: 884px) {
     display: none;
   }
 
