@@ -28,14 +28,14 @@
     accent-color: var(--primary-color);
   }
 
-  @media (max-width: 1175px) {
+  @media (max-width: 1177px) {
     left: 0;
     width: 100%; // 또는 100vw
     justify-content: flex-start;
   }
   
   // 모바일 화면: 숨김
-  @media (max-width: 874px) {
+  @media (max-width: 880px) {
     display: none;
   }
 
