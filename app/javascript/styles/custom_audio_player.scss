@@ -17,6 +17,16 @@
   border-top: 1px solid var(--border-color);
   z-index: 1000;
 
+  button {
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-color);
+  }
+  
   input[type="range"] {
     flex: 1;
     max-width: 100px;
