@@ -34,7 +34,7 @@
   }
 
   // 화면이 좁아지면 메뉴바처럼 왼쪽 끝으로 붙음
-  @media (max-width: 1024px) {
+  @media (max-width: 920px) {
     left: 0;
     width: 100%; // 또는 100vw
     justify-content: flex-start;
