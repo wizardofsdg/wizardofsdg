@@ -41,7 +41,7 @@
     %body{ class: body_classes }
     = content_for?(:content) ? yield(:content) : yield
 
-- unless controller_name == 'settings'
+- unless request.path.starts_with?('/settings')
   .custom-audio-player#global-audio-player
     %button#play ▶
     %audio#player{ src: "/audios/music.mp3" }
