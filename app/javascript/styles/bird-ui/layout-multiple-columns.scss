@@ -5,13 +5,13 @@
 :root {
   /* Brand colors */
   --color-brand-twitter: #1d9bf0;
-  --color-brand-twitter-bg: #15202b;
-  --color-brand-twitter-dim: #8b98a5;
-  --color-brand-twitter-mud: #273340;
+  --color-brand-twitter-bg: #15172b;
+  --color-brand-twitter-dim: #8b8ea5;
+  --color-brand-twitter-mud: #272b40;
   --color-brand-twitter-dark: #232543;
-  --color-brand-twitter-threaded-line: #425364;
-  --color-brand-mastodon: #27a4b8;
-  --color-brand-mastodon-links: #81c5cf;
+  --color-brand-twitter-threaded-line: #424864;
+  --color-brand-mastodon: #2744b8;
+  --color-brand-mastodon-links: #819ecf;
   --color-brand-mastodon-bg: #1e2028;
   --color-brand-mastodon-dim: #717c9b;
   --color-brand-mastodon-mud: #272c40;
@@ -29,7 +29,7 @@
   --color-dim: var(--color-brand-mastodon-dim);
   --color-accent: var(--color-brand-mastodon-links);
   --color-accent-dark: var(--color-brand-mastodon);
-  --color-accent-dark-50: #27a4b880;
+  --color-accent-dark-50: #274eb880;
   --color-green: #00ba7c;
   --color-red: #f91880;
   --color-red-75: #f91880bf;
