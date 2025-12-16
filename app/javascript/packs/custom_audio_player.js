@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const playBtn = document.getElementById("play");
 
   // 요소가 없으면 초기화하지 않음
-  if (!audio || !progress || !playBtn) {
+  if (!audio || !playBtn) {
     console.warn("Audio player elements not found");
     return;
   }
@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   playBtn.addEventListener("click", () => {
     if (audio.paused) {
       audio.play();
-      playBtn.textContent = "⏸︎";
+      playBtn.textContent = "⏸︎"; // 재생 중일 때는 정지 아이콘
     } else {
       audio.pause();
-      playBtn.textContent = "▶";
+      playBtn.textContent = "▶"; // 멈췄을 때는 재생 아이콘
     }
   });
 });
