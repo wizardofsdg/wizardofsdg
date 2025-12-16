@@ -1,37 +1,52 @@
 .custom-audio-player {
   position: fixed;
   bottom: 20px;
-  left: 80px;               // 메뉴바 폭 기준
-  width: 140px;
+  left: 60px;                // 기본 왼쪽 여백 (전체 화면 기준)
+  width: auto;
   background: var(--background-color);
-  padding: 6px 8px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
-  z-index: 1000;
+  z-index: 999;
 
   button {
     background: none;
     border: none;
+    width: 32px;
+    height: 32px;
     font-size: 1.2rem;
     cursor: pointer;
-    color: var(--text-color);
   }
 
-  @media (max-width: 1178px) {
-    left: 10px;
-    width: 100%; // 또는 100vw
-    justify-content: flex-start;
+  button:hover {
+    color: var(--accent-color);
+    opacity: 0.8;
   }
-  
-  // 모바일 화면: 숨김
-  @media (max-width: 882px) {
+
+  input[type="range"] {
+    flex: 1;
+    max-width: 160px;
+    accent-color: var(--primary-color);
+  }
+
+  // 중간 화면일 때 왼쪽 여백 줄이기
+  @media (max-width: 1280px) {
+    left: 40px;
+  }
+
+  @media (max-width: 800px) {
+    left: 20px;
+  }
+
+  // 모바일 화면에서는 숨김
+  @media (max-width: 768px) {
     display: none;
   }
 
+  // 설정 페이지에서는 숨김
   body.settings & {
     display: none;
   }
